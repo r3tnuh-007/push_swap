@@ -6,7 +6,7 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:01:03 by aluis             #+#    #+#             */
-/*   Updated: 2025/11/30 07:42:17 by aluis            ###   ########.fr       */
+/*   Updated: 2025/11/30 08:31:35 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	sort_three(t_stack_node **a)
 
 	biggest_node = find_max(*a);
 	if (biggest_node == *a)
-		ra(a, false);
+		ra(a, true);
 	else if ((*a)->next == biggest_node)
-		rra(a, false);
+		rra(a, true);
 	if ((*a)->value > (*a)->next->value)
-		sa(a, false);
+		sa(a, true);
 }

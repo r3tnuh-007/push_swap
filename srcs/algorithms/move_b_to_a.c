@@ -6,7 +6,7 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:01:03 by aluis             #+#    #+#             */
-/*   Updated: 2025/11/30 08:27:31 by aluis            ###   ########.fr       */
+/*   Updated: 2025/11/30 08:33:50 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,5 @@ void	set_target_b(t_stack_node *a, t_stack_node *b)
 void	move_b_to_a(t_stack_node **a, t_stack_node **b)
 {
 	push_prep(a, (*b)->target_node, 'a');
-	pa(a, b, false);
+	pa(a, b, true);
 }
