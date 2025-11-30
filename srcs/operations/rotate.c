@@ -6,11 +6,11 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:16:33 by aluis             #+#    #+#             */
-/*   Updated: 2025/11/30 07:16:15 by aluis            ###   ########.fr       */
+/*   Updated: 2025/11/30 07:40:05 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 static void	rotate(t_stack_node **stack)
 {
