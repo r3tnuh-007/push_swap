@@ -6,7 +6,7 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:16:33 by aluis             #+#    #+#             */
-/*   Updated: 2025/11/30 07:16:39 by aluis            ###   ########.fr       */
+/*   Updated: 2025/11/30 08:00:35 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
 	else if (argc == 2)
-		argv = split(argv[1], ' ');
+		argv = ft_split(argv[1], ' ');
 	init_stack_a(&a, argv + 1);
 	if (!stack_sorted(a))
 	{

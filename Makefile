@@ -11,11 +11,16 @@ SRCS = srcs/main.c \
        srcs/operations/reverse_rotate.c \
        srcs/utils/input_validation.c \
        srcs/utils/stack_utils.c \
+       srcs/utils/ft_split.c \
+       srcs/utils/ft_atol.c \
        srcs/utils/list_utils.c \
        srcs/utils/free_utils.c \
        srcs/algorithms/small_sort.c \
        srcs/algorithms/big_sort.c \
        srcs/algorithms/sort_utils.c \
+       srcs/algorithms/move_a_to_b.c \
+	   srcs/algorithms/move_b_to_a.c \
+       srcs/algorithms/push_prep.c \
        srcs/algorithms/cost_calculation.c
 
 OBJS = $(SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:16:33 by aluis             #+#    #+#             */
-/*   Updated: 2025/11/30 07:15:39 by aluis            ###   ########.fr       */
+/*   Updated: 2025/11/30 08:25:52 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_stack_node
 
 // Stack initialization
 void			init_stack_a(t_stack_node **a, char **argv);
-char			**split(char *s, char c);
+char			**ft_split(char *s, char c);
 
 // Error handling
 int				error_syntax(char *str_n);
@@ -76,9 +76,15 @@ void			sort_stacks(t_stack_node **a, t_stack_node **b);
 void			move_a_to_b(t_stack_node **a, t_stack_node **b);
 void			move_b_to_a(t_stack_node **a, t_stack_node **b);
 void			min_on_top(t_stack_node **a);
+void			push_prep(t_stack_node **stack, t_stack_node *top_node,
+					char stack_name);
 
 // String utils
 long			ft_atol(const char *s);
 int				ft_strcmp(char *s1, char *s2);
+
+void			set_target_a(t_stack_node *a, t_stack_node *b);
+void			set_target_b(t_stack_node *a, t_stack_node *b);
+void			calculate_cost_a(t_stack_node *a, t_stack_node *b);
 
 #endif
