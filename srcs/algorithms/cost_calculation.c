@@ -6,11 +6,11 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:01:03 by aluis             #+#    #+#             */
-/*   Updated: 2025/11/30 07:34:24 by aluis            ###   ########.fr       */
+/*   Updated: 2025/11/30 07:42:12 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 void	init_nodes_a(t_stack_node *a, t_stack_node *b)
 {
