@@ -5,81 +5,77 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/28 00:11:30 by aluis             #+#    #+#             */
-/*   Updated: 2025/11/30 08:05:10 by aluis            ###   ########.fr       */
+/*   Created: 2025/06/16 06:51:00 by aluis             #+#    #+#             */
+/*   Updated: 2025/12/07 09:33:46 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static int	count_words(char *str, char separator)
+static int	count_wrd(const char *s, char c)
 {
 	int	count;
-	int	i;
+	int	in_wrd;
 
 	count = 0;
-	i = 0;
-	while (str[i])
+	in_wrd = 0;
+	while (*s)
 	{
-		while (str[i] && str[i] == separator)
-			i++;
-		if (str[i] && str[i] != separator)
+		if (*s != c && !in_wrd)
 		{
-			count++;
-			while (str[i] && str[i] != separator)
-				i++;
+			in_wrd = 1;
+			count ++;
 		}
+		else if (*s == c)
+			in_wrd = 0;
+		s ++;
 	}
 	return (count);
 }
 
-static char	*get_next_word(char *str, char separator)
+static char	*get_nxt_wrd(const char **s, char c)
 {
-	static int	cursor = 0;
-	char		*next_word;
+	char		*wrd;
+	const char	*start;
 	int			len;
-	int			i;
 
-	len = 0;
-	i = 0;
-	while (str[cursor] == separator)
-		++cursor;
-	while ((str[cursor + len] != separator) && str[cursor + len])
-		++len;
-	next_word = malloc((size_t)len * sizeof(char) + 1);
-	if (!next_word)
+	while (**s == c)
+		(*s)++;
+	start = *s;
+	while (**s != c && **s)
+		(*s)++;
+	len = *s - start;
+	wrd = (char *) malloc(sizeof(char) * (len + 1));
+	if (!wrd)
 		return (NULL);
-	while ((str[cursor] != separator) && str[cursor])
-		next_word[i++] = str[cursor++];
-	next_word[i] = '\0';
-	return (next_word);
+	wrd[len] = '\0';
+	while (len --)
+		wrd[len] = start[len];
+	return (wrd);
 }
 
-char	**ft_split(char *str, char separator)
+char	**ft_split(char const *s, char c)
 {
-	int		words_count;
-	char	**result_array;
+	char	**array;
+	int		wrds;
 	int		i;
 
-	words_count = count_words(str, separator);
-	if (!words_count)
-		exit(1);
-	result_array = malloc(sizeof(char *) * (size_t)(words_count + 2));
-	if (!result_array)
+	wrds = count_wrd(s, c);
+	array = (char **) malloc(sizeof(char *) * (wrds + 1));
+	if (!array)
 		return (NULL);
 	i = 0;
-	while (words_count-- >= 0)
+	while (i < wrds)
 	{
-		if (i == 0)
+		array[i] = get_nxt_wrd(&s, c);
+		if (!array[i])
 		{
-			result_array[i] = malloc(sizeof(char));
-			if (!result_array[i])
-				return (NULL);
-			result_array[i++][0] = '\0';
-			continue ;
+			while (i > 0)
+				free(array[-- i]);
+			free(array);
 		}
-		result_array[i++] = get_next_word(str, separator);
+		i ++;
 	}
-	result_array[i] = NULL;
-	return (result_array);
+	array[i] = NULL;
+	return (array);
 }

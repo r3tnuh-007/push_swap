@@ -14,6 +14,11 @@ SRCS = srcs/main.c \
        srcs/utils/ft_atol.c \
        srcs/utils/stack_init.c \
        srcs/utils/free_utils.c \
+       srcs/utils/ft_strjoin.c \
+	   srcs/utils/ft_strlen.c \
+	   srcs/utils/ft_strdup.c \
+	   srcs/utils/ft_memcpy.c \
+	   srcs/utils/parser.c \
        srcs/algorithms/small_sort.c \
        srcs/algorithms/big_sort.c \
        srcs/algorithms/push_swap_init.c \
