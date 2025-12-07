@@ -6,7 +6,7 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:11:30 by aluis             #+#    #+#             */
-/*   Updated: 2025/12/07 17:40:16 by aluis            ###   ########.fr       */
+/*   Updated: 2025/12/07 19:36:54 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ void	free_matrix(char **argv)
 {
 	int	i;
 
-	i = -1;
+	i = 0;
 	if (NULL == argv || NULL == *argv)
 		return ;
 	while (argv[i])
 		free(argv[i++]);
-	free(argv - 1);
+	free(argv);
 }
 
 /*

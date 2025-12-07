@@ -6,7 +6,7 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:16:33 by aluis             #+#    #+#             */
-/*   Updated: 2025/12/07 17:57:57 by aluis            ###   ########.fr       */
+/*   Updated: 2025/12/07 20:02:40 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_stack_node
 }	t_stack_node;
 
 //*** Handle input ./push_swap "0 2 1 -22" ***
-char			**ft_split(char *str, char separator);
+char			**ft_split(char const *s, char c);
 
 //*** Handle errors-free ***
 void			free_matrix(char **argv);
@@ -74,12 +74,5 @@ void			rrb(t_stack_node **b, bool print);
 void			rrr(t_stack_node **a, t_stack_node **b, bool print);
 void			pa(t_stack_node **a, t_stack_node **b, bool print);
 void			pb(t_stack_node **b, t_stack_node **a, bool print);
-
-//*** Utils ***
-char			**ft_strjoin(char **s1, char **s2);
-char			*ft_strdup(char *s);
-char			**parser(char **argv, int argc);
-void			*ft_memcpy(void *dest, const void *src, size_t n);
-size_t			ft_strlen(char **s);
 
 #endif

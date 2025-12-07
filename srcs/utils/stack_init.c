@@ -6,7 +6,7 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:11:30 by aluis             #+#    #+#             */
-/*   Updated: 2025/12/07 17:48:06 by aluis            ###   ########.fr       */
+/*   Updated: 2025/12/07 20:17:47 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,21 +57,28 @@ static long	ft_atol(const char *str)
 void	stack_init(t_stack_node **a, char **argv, bool flag_argc_2)
 {
 	long	nbr;
+	char	**splited;
 	int		i;
+	int		j;
 
-	i = 0;
+	i = 1;
 	while (argv[i])
 	{
-		if (error_syntax(argv[i]))
-			error_free(a, argv, flag_argc_2);
-		nbr = ft_atol(argv[i]);
-		if (nbr > INT_MAX || nbr < INT_MIN)
-			error_free(a, argv, flag_argc_2);
-		if (error_repetition(*a, (int)nbr))
-			error_free(a, argv, flag_argc_2);
-		append_node(a, (int)nbr);
-		++i;
+		splited = ft_split(argv[i], ' ');
+		j = 0;
+		while (splited[j] != NULL)
+		{
+			if (error_syntax(splited[j]))
+				error_free(a, splited, flag_argc_2);
+			nbr = ft_atol(splited[j]);
+			if (nbr > INT_MAX || nbr < INT_MIN)
+				error_free(a, splited, flag_argc_2);
+			if (error_repetition(*a, (int)nbr))
+				error_free(a, splited, flag_argc_2);
+			append_node(a, (int)nbr);
+			j++;
+		}
+		i++;
+		free_matrix(splited);
 	}
-	if (flag_argc_2)
-		free_matrix(argv);
 }
