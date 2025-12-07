@@ -9,7 +9,6 @@ SRCS = srcs/main.c \
        srcs/operations/swap.c \
        srcs/operations/rotate.c \
        srcs/operations/reverse_rotate.c \
-       srcs/utils/input_validation.c \
        srcs/utils/stack_utils.c \
        srcs/utils/ft_split.c \
        srcs/utils/ft_atol.c \

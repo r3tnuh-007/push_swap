@@ -6,7 +6,7 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:16:33 by aluis             #+#    #+#             */
-/*   Updated: 2025/12/07 00:59:20 by aluis            ###   ########.fr       */
+/*   Updated: 2025/12/07 01:31:25 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 	if (!stack_sorted(a))
 	{
 		if (stack_len(a) == 2)
-			sa(&a, true);
+			sa(&a, false);
 		else if (stack_len(a) == 3)
 			tiny_sort(&a);
 		else
