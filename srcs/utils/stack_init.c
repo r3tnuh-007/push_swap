@@ -6,11 +6,43 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:11:30 by aluis             #+#    #+#             */
-/*   Updated: 2025/12/06 23:34:30 by aluis            ###   ########.fr       */
+/*   Updated: 2025/12/07 17:48:06 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+/*
+ *  atol, i need it to check eventual overflows
+ *  converting every string into a long value
+*/
+static long	ft_atol(const char *str)
+{
+	long	num;
+	int		isneg;
+	int		i;
+
+	num = 0;
+	isneg = 1;
+	i = 0;
+	while (str[i] && (str[i] == ' ' || str[i] == '\t'
+			|| str[i] == '\n' || str[i] == '\r'
+			|| str[i] == '\v' || str[i] == '\f'))
+		i++;
+	if (str[i] == '+')
+		i++;
+	else if (str[i] == '-')
+	{
+		isneg *= -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		num = (num * 10) + (str[i] - '0');
+		i++;
+	}
+	return (num * isneg);
+}
 
 /*
  * Create the stack with the command line values

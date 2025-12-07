@@ -6,7 +6,7 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:01:03 by aluis             #+#    #+#             */
-/*   Updated: 2025/12/07 01:20:22 by aluis            ###   ########.fr       */
+/*   Updated: 2025/12/07 17:42:15 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	push(t_stack_node **dest, t_stack_node **src)
 {
 	t_stack_node	*node_to_push;
 
-	if (!*src)
+	if (NULL == *src)
 		return ;
 	node_to_push = *src;
 	*src = (*src)->next;

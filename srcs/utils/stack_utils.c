@@ -6,7 +6,7 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:11:30 by aluis             #+#    #+#             */
-/*   Updated: 2025/12/06 23:27:57 by aluis            ###   ########.fr       */
+/*   Updated: 2025/12/07 17:49:05 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_stack_node	*find_last_node(t_stack_node *head)
 {
-	if (!head)
+	if (NULL == head)
 		return (NULL);
 	while (head->next)
 		head = head->next;
@@ -30,14 +30,14 @@ void	append_node(t_stack_node **stack, int nbr)
 	t_stack_node	*node;
 	t_stack_node	*last_node;
 
-	if (!stack)
+	if (NULL == stack)
 		return ;
 	node = malloc(sizeof(t_stack_node));
-	if (!node)
+	if (NULL == node)
 		return ;
 	node->next = NULL;
 	node->value = nbr;
-	if (!*stack)
+	if (NULL == *stack)
 	{
 		*stack = node;
 		node->prev = NULL;
@@ -79,7 +79,7 @@ t_stack_node	*find_smallest(t_stack_node *stack)
 */
 t_stack_node	*return_cheapest(t_stack_node *stack)
 {
-	if (!stack)
+	if (NULL == stack)
 		return (NULL);
 	while (stack)
 	{
@@ -94,7 +94,7 @@ int	stack_len(t_stack_node *stack)
 {
 	int	count;
 
-	if (!stack)
+	if (NULL == stack)
 		return (0);
 	count = 0;
 	while (stack)

@@ -6,7 +6,7 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:20:33 by aluis             #+#    #+#             */
-/*   Updated: 2025/12/07 01:21:15 by aluis            ###   ########.fr       */
+/*   Updated: 2025/12/07 17:45:26 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	reverse_rotate(t_stack_node **stack)
 	int				len;
 
 	len = stack_len(*stack);
-	if (*stack == NULL || stack == NULL || len == 1)
+	if (NULL == *stack || NULL == stack || 1 == len)
 		return ;
 	last = find_last_node(*stack);
 	last->prev->next = NULL;

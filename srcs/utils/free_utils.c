@@ -6,7 +6,7 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:11:30 by aluis             #+#    #+#             */
-/*   Updated: 2025/12/07 07:04:23 by aluis            ###   ########.fr       */
+/*   Updated: 2025/12/07 17:40:16 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	free_matrix(char **argv)
 	int	i;
 
 	i = -1;
-	if (!argv || !*argv)
+	if (NULL == argv || NULL == *argv)
 		return ;
 	while (argv[i])
 		free(argv[i++]);
@@ -38,7 +38,7 @@ void	free_stack(t_stack_node **stack)
 	t_stack_node	*tmp;
 	t_stack_node	*current;
 
-	if (!stack)
+	if (NULL == stack)
 		return ;
 	current = *stack;
 	while (current)

@@ -6,7 +6,7 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:16:33 by aluis             #+#    #+#             */
-/*   Updated: 2025/12/07 01:22:39 by aluis            ###   ########.fr       */
+/*   Updated: 2025/12/07 17:50:01 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	swap(t_stack_node **head)
 	int	len;
 
 	len = stack_len(*head);
-	if (*head == NULL || head == NULL || len == 1)
+	if (NULL == *head || NULL == head || 1 == len)
 		return ;
 	*head = (*head)->next;
 	(*head)->prev->prev = *head;
@@ -32,7 +32,7 @@ static void	swap(t_stack_node **head)
 	(*head)->prev = NULL;
 }
 
-void	sa(t_stack_node **a, bool checker)
+void	sa(t_stack_node	**a, bool checker)
 {
 	swap(a);
 	if (!checker)
