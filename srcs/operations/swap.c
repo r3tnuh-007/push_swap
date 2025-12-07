@@ -6,15 +6,22 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:16:33 by aluis             #+#    #+#             */
-/*   Updated: 2025/11/30 07:40:12 by aluis            ###   ########.fr       */
+/*   Updated: 2025/12/06 23:15:58 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+/*
+ * ATTENTION
+ * There may be only 2 nodes
+*/
 static void	swap(t_stack_node **head)
 {
-	if (!*head || !(*head)->next)
+	int	len;
+
+	len = stack_len(*head);
+	if (*head == NULL || head == NULL || len == 1)
 		return ;
 	*head = (*head)->next;
 	(*head)->prev->prev = *head;

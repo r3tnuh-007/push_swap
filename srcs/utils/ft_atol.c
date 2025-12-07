@@ -6,7 +6,7 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:11:30 by aluis             #+#    #+#             */
-/*   Updated: 2025/11/30 08:07:54 by aluis            ###   ########.fr       */
+/*   Updated: 2025/12/06 23:33:50 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,29 @@
 long	ft_atol(const char *str)
 {
 	long	num;
-	int		sign;
+	int		isneg;
 	int		i;
 
 	num = 0;
-	sign = 1;
+	isneg = 1;
 	i = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+	while (str[i] && (str[i] == ' ' || str[i] == '\t'
+			|| str[i] == '\n' || str[i] == '\r'
+			|| str[i] == '\v' || str[i] == '\f'))
 		i++;
-	if (str[i] == '-')
-		sign = -1;
-	if (str[i] == '-' || str[i] == '+')
+	if (str[i] == '+')
 		i++;
+	else if (str[i] == '-')
+	{
+		isneg *= -1;
+		i++;
+	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		num = (num * 10) + (str[i] - '0');
 		i++;
 	}
-	return (num * sign);
+	return (num * isneg);
 }
 
 int	ft_strcmp(char *s1, char *s2)

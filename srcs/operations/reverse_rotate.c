@@ -6,19 +6,24 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:20:33 by aluis             #+#    #+#             */
-/*   Updated: 2025/11/30 07:39:57 by aluis            ###   ########.fr       */
+/*   Updated: 2025/12/06 23:02:50 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+/*
+ * Bottom to top
+*/
 static void	reverse_rotate(t_stack_node **stack)
 {
 	t_stack_node	*last;
+	int				len;
 
-	if (!*stack || !(*stack)->next)
+	len = stack_len(*stack);
+	if (*stack == NULL || stack == NULL || len == 1)
 		return ;
-	last = find_last(*stack);
+	last = find_last_node(*stack);
 	last->prev->next = NULL;
 	last->next = *stack;
 	last->prev = NULL;

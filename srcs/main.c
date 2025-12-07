@@ -6,7 +6,7 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:16:33 by aluis             #+#    #+#             */
-/*   Updated: 2025/11/30 08:30:49 by aluis            ###   ########.fr       */
+/*   Updated: 2025/12/07 00:59:20 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ int	main(int argc, char **argv)
 		return (1);
 	else if (argc == 2)
 		argv = ft_split(argv[1], ' ');
-	init_stack_a(&a, argv + 1);
+	stack_init(&a, argv + 1, 2 == argc);
 	if (!stack_sorted(a))
 	{
 		if (stack_len(a) == 2)
 			sa(&a, true);
 		else if (stack_len(a) == 3)
-			sort_three(&a);
+			tiny_sort(&a);
 		else
-			sort_stacks(&a, &b);
+			push_swap(&a, &b);
 	}
 	free_stack(&a);
 	return (0);

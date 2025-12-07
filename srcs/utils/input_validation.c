@@ -6,26 +6,11 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:11:30 by aluis             #+#    #+#             */
-/*   Updated: 2025/11/30 07:43:36 by aluis            ###   ########.fr       */
+/*   Updated: 2025/12/07 01:09:54 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-
-int	error_syntax(char *str_n)
-{
-	if (!(*str_n == '+' || *str_n == '-' || (*str_n >= '0' && *str_n <= '9')))
-		return (1);
-	if ((*str_n == '+' || *str_n == '-')
-		&& !(str_n[1] >= '0' && str_n[1] <= '9'))
-		return (1);
-	while (*++str_n)
-	{
-		if (!(*str_n >= '0' && *str_n <= '9'))
-			return (1);
-	}
-	return (0);
-}
 
 int	error_duplicate(t_stack_node *a, int n)
 {

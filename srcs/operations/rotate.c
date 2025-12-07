@@ -6,19 +6,24 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:16:33 by aluis             #+#    #+#             */
-/*   Updated: 2025/11/30 07:40:05 by aluis            ###   ########.fr       */
+/*   Updated: 2025/12/06 23:06:56 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+/*
+ * Top node to bottom position
+*/
 static void	rotate(t_stack_node **stack)
 {
 	t_stack_node	*last_node;
+	int				len;
 
-	if (!*stack || !(*stack)->next)
+	len = stack_len(*stack);
+	if (NULL == stack || NULL == *stack || 1 == len)
 		return ;
-	last_node = find_last(*stack);
+	last_node = find_last_node(*stack);
 	last_node->next = *stack;
 	*stack = (*stack)->next;
 	(*stack)->prev = NULL;

@@ -6,11 +6,89 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:11:30 by aluis             #+#    #+#             */
-/*   Updated: 2025/11/30 07:43:28 by aluis            ###   ########.fr       */
+/*   Updated: 2025/12/06 23:27:57 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+t_stack_node	*find_last_node(t_stack_node *head)
+{
+	if (!head)
+		return (NULL);
+	while (head->next)
+		head = head->next;
+	return (head);
+}
+
+/*
+ * Search for the last node and append
+ * 🚨 Pay attention if the stack empty?
+*/
+void	append_node(t_stack_node **stack, int nbr)
+{
+	t_stack_node	*node;
+	t_stack_node	*last_node;
+
+	if (!stack)
+		return ;
+	node = malloc(sizeof(t_stack_node));
+	if (!node)
+		return ;
+	node->next = NULL;
+	node->value = nbr;
+	if (!*stack)
+	{
+		*stack = node;
+		node->prev = NULL;
+	}
+	else
+	{
+		last_node = find_last_node(*stack);
+		last_node->next = node;
+		node->prev = last_node;
+	}
+}
+
+/*
+ * Find the smallest value node
+*/
+t_stack_node	*find_smallest(t_stack_node *stack)
+{
+	long			smallest;
+	t_stack_node	*smallest_node;
+
+	if (NULL == stack)
+		return (NULL);
+	smallest = LONG_MAX;
+	while (stack)
+	{
+		if (stack->value < smallest)
+		{
+			smallest = stack->value;
+			smallest_node = stack;
+		}
+		stack = stack->next;
+	}
+	return (smallest_node);
+}
+
+/*
+ * Return the cheapest node
+ * that is already flagged
+*/
+t_stack_node	*return_cheapest(t_stack_node *stack)
+{
+	if (!stack)
+		return (NULL);
+	while (stack)
+	{
+		if (stack->cheapest)
+			return (stack);
+		stack = stack->next;
+	}
+	return (NULL);
+}
 
 int	stack_len(t_stack_node *stack)
 {
@@ -21,70 +99,8 @@ int	stack_len(t_stack_node *stack)
 	count = 0;
 	while (stack)
 	{
+		++count;
 		stack = stack->next;
-		count++;
 	}
 	return (count);
-}
-
-bool	stack_sorted(t_stack_node *stack)
-{
-	if (!stack)
-		return (1);
-	while (stack->next)
-	{
-		if (stack->value > stack->next->value)
-			return (false);
-		stack = stack->next;
-	}
-	return (true);
-}
-
-t_stack_node	*find_last(t_stack_node *stack)
-{
-	if (!stack)
-		return (NULL);
-	while (stack->next)
-		stack = stack->next;
-	return (stack);
-}
-
-t_stack_node	*find_min(t_stack_node *stack)
-{
-	long			min;
-	t_stack_node	*min_node;
-
-	if (!stack)
-		return (NULL);
-	min = LONG_MAX;
-	while (stack)
-	{
-		if (stack->value < min)
-		{
-			min = stack->value;
-			min_node = stack;
-		}
-		stack = stack->next;
-	}
-	return (min_node);
-}
-
-t_stack_node	*find_max(t_stack_node *stack)
-{
-	long			max;
-	t_stack_node	*max_node;
-
-	if (!stack)
-		return (NULL);
-	max = LONG_MIN;
-	while (stack)
-	{
-		if (stack->value > max)
-		{
-			max = stack->value;
-			max_node = stack;
-		}
-		stack = stack->next;
-	}
-	return (max_node);
 }

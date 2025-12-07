@@ -6,33 +6,37 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:01:03 by aluis             #+#    #+#             */
-/*   Updated: 2025/11/30 07:39:16 by aluis            ###   ########.fr       */
+/*   Updated: 2025/12/07 00:25:56 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static void	push(t_stack_node **dst, t_stack_node **src)
+/*
+ * Push a node to the top from src to dest
+ * 🚨 attention If stack empty (i.e. NULL)
+*/
+static void	push(t_stack_node **dest, t_stack_node **src)
 {
-	t_stack_node	*push_node;
+	t_stack_node	*node_to_push;
 
 	if (!*src)
 		return ;
-	push_node = *src;
+	node_to_push = *src;
 	*src = (*src)->next;
 	if (*src)
 		(*src)->prev = NULL;
-	push_node->prev = NULL;
-	if (!*dst)
+	node_to_push->prev = NULL;
+	if (NULL == *dest)
 	{
-		*dst = push_node;
-		push_node->next = NULL;
+		*dest = node_to_push;
+		node_to_push->next = NULL;
 	}
 	else
 	{
-		push_node->next = *dst;
-		push_node->next->prev = push_node;
-		*dst = push_node;
+		node_to_push->next = *dest;
+		node_to_push->next->prev = node_to_push;
+		*dest = node_to_push;
 	}
 }
 
